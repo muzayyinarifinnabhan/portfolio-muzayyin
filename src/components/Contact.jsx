@@ -36,7 +36,7 @@ const Contact = () => {
     };
 
     const contactCards = [
-        { icon: <BsEnvelope size={24} />, title: t.contact.email, content: <a href="mailto:muzayyinarifinnabhan@gmail.com" className="text-muted dark:text-light-100/85 hover:text-accent transition-colors">muzayyinarifinnabhan@gmail.com</a> },
+        { icon: <BsEnvelope size={24} />, title: t.contact.email, content: <a href="mailto:muzayyinarifinnabhan@gmail.com" className="text-muted dark:text-light-100/85 hover:text-accent transition-colors break-all">muzayyinarifinnabhan@gmail.com</a> },
         { icon: <BsPhone size={24} />, title: t.contact.phone, content: <p className="text-muted dark:text-light-100/85">+62 856 9767 1091</p> },
         { icon: <BsGeoAlt size={24} />, title: t.contact.location, content: <p className="text-muted dark:text-light-100/85">{t.contact.locationValue}</p> },
     ];
@@ -61,8 +61,8 @@ const Contact = () => {
                     <motion.div
                         initial={{ opacity: 0, x: -40 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.5, ease: 'easeOut' }}
                         className="flex-1 space-y-5"
                     >
                         {contactCards.map((card, i) => (
@@ -70,13 +70,12 @@ const Contact = () => {
                                 key={card.title}
                                 initial={{ opacity: 0, x: -30 }}
                                 whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1, duration: 0.5 }}
-                                whileHover={{ x: 6 }}
+                                viewport={{ once: true, margin: '-60px' }}
+                                transition={{ delay: i * 0.1, duration: 0.4, ease: 'easeOut' }}
                                 className="glass-card p-6 flex items-start gap-4"
                             >
                                 <div className="p-4 bg-accent/15 text-accent rounded-xl shrink-0">{card.icon}</div>
-                                <div>
+                                <div className="min-w-0">
                                     <h4 className="text-lg font-bold mb-1 text-dark-100 dark:text-light-100">{card.title}</h4>
                                     {card.content}
                                 </div>
@@ -92,10 +91,8 @@ const Contact = () => {
                                     rel="noopener noreferrer"
                                     initial={{ opacity: 0, scale: 0.8 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.3 + i * 0.08 }}
-                                    whileHover={{ scale: 1.1, y: -4, rotate: 3 }}
-                                    whileTap={{ scale: 0.95 }}
+                                    viewport={{ once: true, margin: '-60px' }}
+                                    transition={{ delay: 0.3 + i * 0.08, duration: 0.3 }}
                                     className="p-4 glass-card text-dark-100 dark:text-light-100 hover:text-accent hover:border-accent/40 transition-colors"
                                 >
                                     {social.icon}
@@ -107,8 +104,8 @@ const Contact = () => {
                     <motion.div
                         initial={{ opacity: 0, x: 40 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.5, ease: 'easeOut' }}
                         className="flex-1"
                     >
                         {status === 'success' ? (
@@ -139,8 +136,8 @@ const Contact = () => {
                                         key={field.key}
                                         initial={{ opacity: 0, y: 16 }}
                                         whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: 0.1 + i * 0.08 }}
+                                        viewport={{ once: true, margin: '-60px' }}
+                                        transition={{ delay: 0.1 + i * 0.08, duration: 0.35, ease: 'easeOut' }}
                                     >
                                         <label className="block text-sm font-semibold mb-2 text-dark-100 dark:text-light-100">{field.label}</label>
                                         <input
@@ -156,8 +153,8 @@ const Contact = () => {
                                 <motion.div
                                     initial={{ opacity: 0, y: 16 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.26 }}
+                                    viewport={{ once: true, margin: '-60px' }}
+                                    transition={{ delay: 0.26, duration: 0.35, ease: 'easeOut' }}
                                 >
                                     <label className="block text-sm font-semibold mb-2 text-dark-100 dark:text-light-100">{t.contact.formMessage}</label>
                                     <textarea
@@ -179,8 +176,6 @@ const Contact = () => {
                                 <motion.button
                                     type="submit"
                                     disabled={status === 'loading'}
-                                    whileHover={{ scale: 1.02, y: -2 }}
-                                    whileTap={{ scale: 0.98 }}
                                     className="w-full py-4 bg-accent text-light-100 font-bold rounded-lg hover:bg-[#c96228] transition-colors shadow-[0_4px_20px_rgba(224,112,48,0.35)] disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                                 >
                                     {status === 'loading' ? (

@@ -52,26 +52,17 @@ const Navbar = () => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
         };
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
 
         // Scrollspy Observer
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.3, // 30% of the section should be visible
-        };
-
-        const observerCallback = (entries) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     setActiveSection(`#${entry.target.id}`);
                 }
             });
-        };
+        }, { threshold: 0.3 });
 
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-        // Observe all sections present in navLinks
         navLinks.forEach(link => {
             const el = document.querySelector(link.href);
             if (el) observer.observe(el);
@@ -87,8 +78,8 @@ const Navbar = () => {
         <motion.nav
             initial={{ y: -80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'glass py-4 shadow-[0_4px_24px_rgba(15,61,46,0.08)]' : 'py-6 bg-transparent'}`}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className={`fixed w-full z-50 transition-all duration-700 ${isScrolled ? 'glass py-4 shadow-[0_4px_24px_rgba(15,61,46,0.08)]' : 'py-6 bg-transparent'}`}
         >
             <div className="container mx-auto px-6 md:px-12 flex justify-between items-center text-dark-100 dark:text-light-100">
 
@@ -103,10 +94,10 @@ const Navbar = () => {
                             <a
                                 key={link.href}
                                 href={link.href}
-                                className={`relative group font-medium transition-colors py-1 ${isActive ? 'text-accent' : 'text-dark-100 dark:text-light-100 hover:text-accent'}`}
+                                className={`relative group font-medium transition-all duration-500 py-1 ${isActive ? 'text-accent' : 'text-dark-100 dark:text-light-100 hover:text-accent'}`}
                             >
                                 {link.name}
-                                <span className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                                <span className={`absolute bottom-0 left-0 h-0.5 bg-accent transition-all duration-500 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                             </a>
                         );
                     })}

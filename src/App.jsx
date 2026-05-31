@@ -3,16 +3,16 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ReactLenis } from 'lenis/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import About from './components/About';
+import Skills from './components/Skills';
+import Resume from './components/Resume';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
 import ScrollProgress from './components/ScrollProgress';
 import { AuthProvider, useAuth } from './context/AuthContext';
 
-const About = lazy(() => import('./components/About'));
-const Skills = lazy(() => import('./components/Skills'));
-const Resume = lazy(() => import('./components/Resume'));
-const Projects = lazy(() => import('./components/Projects'));
-const Contact = lazy(() => import('./components/Contact'));
-const Footer = lazy(() => import('./components/Footer'));
-const BackToTop = lazy(() => import('./components/BackToTop'));
 const AIChat = lazy(() => import('./components/AIChat'));
 const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
@@ -38,14 +38,14 @@ const Portfolio = () => (
       <Navbar />
       <main>
         <Hero />
-        <Suspense fallback={<SectionFallback />}><About /></Suspense>
-        <Suspense fallback={<SectionFallback />}><Skills /></Suspense>
-        <Suspense fallback={<SectionFallback />}><Resume /></Suspense>
-        <Suspense fallback={<SectionFallback />}><Projects /></Suspense>
-        <Suspense fallback={<SectionFallback />}><Contact /></Suspense>
+        <About />
+        <Skills />
+        <Resume />
+        <Projects />
+        <Contact />
       </main>
-      <Suspense fallback={null}><Footer /></Suspense>
-      <Suspense fallback={null}><BackToTop /></Suspense>
+      <Footer />
+      <BackToTop />
       <Suspense fallback={null}><AIChat /></Suspense>
     </div>
   </ReactLenis>

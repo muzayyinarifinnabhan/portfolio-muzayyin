@@ -30,12 +30,12 @@ const skills = [
 
 const containerVariants = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.06 } },
+    visible: { transition: { staggerChildren: 0.03 } },
 };
 
 const itemVariants = {
     hidden: { opacity: 0, scale: 0.8, y: 20 },
-    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
 };
 
 const Skills = () => {
@@ -62,8 +62,6 @@ const Skills = () => {
                         <motion.div
                             key={skill.name}
                             variants={itemVariants}
-                            whileHover={{ scale: 1.06, y: -6, rotate: idx % 2 === 0 ? 1 : -1 }}
-                            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                             className="glass-card p-6 flex flex-col items-center justify-center gap-3 cursor-default relative overflow-hidden group hover:border-accent/40 transition-colors duration-300"
                         >
                             <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-0" />

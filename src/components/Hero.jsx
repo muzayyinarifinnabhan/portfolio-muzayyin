@@ -110,11 +110,11 @@ const Hero = () => {
                     >
                         <div className="absolute -inset-3 bg-gradient-to-tr from-accent/40 to-primary/30 rounded-full blur-2xl opacity-40" />
                         <img
-                            src="/profile.jpg"
+                            src="/profile.png"
                             alt="Muzayyin"
                             loading="eager"
                             fetchPriority="high"
-                            decoding="sync"
+                            decoding="async"
                             width="384"
                             height="384"
                             className="relative z-10 w-full h-full object-cover rounded-full border-4 border-light-300 dark:border-dark-100 shadow-2xl"

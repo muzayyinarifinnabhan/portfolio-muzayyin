@@ -43,7 +43,7 @@ const About = () => {
                             style={{ backgroundColor: PHOTO_BG }}
                         >
                             <motion.img
-                                src="/profile.jpg"
+                                src="/profile.png"
                                 alt="Muzayyin Arifin Nabhan"
                                 loading="lazy"
                                 decoding="async"
