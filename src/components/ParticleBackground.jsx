@@ -17,29 +17,32 @@ const ParticleBackground = () => {
                 interactivity: {
                     events: {
                         onClick: { enable: false },
-                        onHover: { enable: false },
+                        onHover: { enable: true, mode: "repulse" },
                         resize: true,
+                    },
+                    modes: {
+                        repulse: { distance: 120, duration: 0.3 },
                     },
                 },
                 particles: {
                     color: { value: "#0F3D2E" },
                     links: {
                         color: "#C45A1A",
-                        distance: 150,
+                        distance: 160,
                         enable: true,
-                        opacity: 0.2,
-                        width: 1,
+                        opacity: 0.35,
+                        width: 1.5,
                     },
                     move: {
                         enable: true,
                         outModes: { default: "bounce" },
-                        speed: 1,
+                        speed: 0.8,
                     },
                     number: {
                         density: { enable: true, area: 800 },
-                        value: 20,
+                        value: 35,
                     },
-                    opacity: { value: 0.4 },
+                    opacity: { value: 0.5, random: true },
                     shape: { type: "circle" },
                     size: { value: { min: 1, max: 3 } },
                 },
