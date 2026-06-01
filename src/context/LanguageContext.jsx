@@ -14,7 +14,7 @@ const translations = {
         hero: {
             greeting: "Halo, Saya Muzayyin Arifin Nabhan",
             roles: ["Frontend Developer", "Web Designer", "Tech Enthusiast"],
-            description: "Saya adalah seorang Software Engineer yang bersemangat dalam membangun antarmuka web yang indah dan responsif. Berbasis di Indonesia.",
+            description: "Saya adalah seorang Web Developer yang bersemangat dalam membangun antarmuka web yang indah dan responsif. Berbasis di Indonesia.",
             contactBtn: "Hubungi Saya",
             portfolioBtn: "Lihat Portofolio"
         },
@@ -133,14 +133,14 @@ const translations = {
         hero: {
             greeting: "Hi, I'm Muzayyin Arifin Nabhan",
             roles: ["Frontend Developer", "Web Designer", "Tech Enthusiast"],
-            description: "I am a Software Engineer passionate about building beautiful and responsive web interfaces. Based in Indonesia.",
+            description: "I am a Web Developer passionate about building beautiful and responsive web interfaces. Based in Indonesia.",
             contactBtn: "Contact",
             portfolioBtn: "View Portfolio"
         },
         about: {
             title: "About",
             titleHighlight: "Me",
-            p1: "Hello! I am an enthusiastic software developer focusing on creating engaging, responsive, and accessible web experiences.",
+            p1: "Hello! I am an enthusiastic web developer focusing on creating engaging, responsive, and accessible web experiences.",
             p2: "I love the intersection of design and development. Armed with expertise in the React, Next.js, and Tailwind CSS ecosystem, I am always eager to learn new technologies and craft solutions for complex problems.",
             resumeBtn: "Download Resume"
         },
