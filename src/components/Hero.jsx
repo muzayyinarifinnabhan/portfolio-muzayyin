@@ -118,7 +118,7 @@ const Hero = () => {
                         >
                             <div className="absolute -inset-3 bg-gradient-to-tr from-accent/40 to-primary/30 rounded-full blur-2xl opacity-40" />
                             <img
-                                src="/profile.png"
+                                src="/Purzay%20JAS.png"
                                 alt="Muzayyin"
                                 loading="eager"
                                 fetchPriority="high"

@@ -84,7 +84,7 @@ const Navbar = () => {
             <div className="container mx-auto px-6 md:px-12 flex items-center justify-between text-dark-100 dark:text-light-100">
                 <a href="#home" className="flex items-center gap-3 shrink-0">
                     <img
-                        src="/profile.png"
+                        src="/Purzay%20JAS.png"
                         alt="Muzayyin Arifin Nabhan"
                         width={42}
                         height={42}
