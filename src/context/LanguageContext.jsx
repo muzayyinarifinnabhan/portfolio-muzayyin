@@ -142,7 +142,7 @@ const translations = {
             titleHighlight: "Me",
             p1: "Hello! I am an enthusiastic web developer focusing on creating engaging, responsive, and accessible web experiences.",
             p2: "I love the intersection of design and development. Armed with expertise in the React, Next.js, and Tailwind CSS ecosystem, I am always eager to learn new technologies and craft solutions for complex problems.",
-            resumeBtn: "Download Resume"
+            resumeBtn: "Download CV"
         },
         skills: {
             titleHighlight: "Skills"

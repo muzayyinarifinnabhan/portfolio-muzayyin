@@ -13,7 +13,6 @@ import BackToTop from './components/BackToTop';
 import ScrollProgress from './components/ScrollProgress';
 import { AuthProvider, useAuth } from './context/AuthContext';
 
-const AIChat = lazy(() => import('./components/AIChat'));
 const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard'));
 
@@ -46,7 +45,6 @@ const Portfolio = () => (
       </main>
       <Footer />
       <BackToTop />
-      <Suspense fallback={null}><AIChat /></Suspense>
     </div>
   </ReactLenis>
 );

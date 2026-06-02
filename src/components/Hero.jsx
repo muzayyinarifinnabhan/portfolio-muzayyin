@@ -1,6 +1,7 @@
 import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { FaGithub, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 import ParticleBackground from './ParticleBackground';
 import FloatingOrbs from './FloatingOrbs';
 import { useLanguage } from '../context/LanguageContext';
@@ -10,6 +11,12 @@ const fadeUp = (delay = 0) => ({
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] },
 });
+
+const socials = [
+    { icon: FaGithub, href: 'https://github.com/muzayyinarifinnabhan', label: 'GitHub' },
+    { icon: FaLinkedinIn, href: '#', label: 'LinkedIn' },
+    { icon: FaInstagram, href: 'https://www.instagram.com/lifesecretzarr?igsh=M3drdjQzdHRqaGlt', label: 'Instagram' },
+];
 
 const Hero = () => {
     const { t, language } = useLanguage();
@@ -99,27 +106,49 @@ const Hero = () => {
                 </div>
 
                 <div className="flex-1 flex justify-center md:justify-end pointer-events-auto">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
-                        animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                        transition={{ duration: 1, type: 'spring', stiffness: 80, damping: 14, delay: 0.2 }}
-                        style={{ rotateX, rotateY, transformPerspective: 800 }}
-                        onMouseMove={handleMouseMove}
-                        onMouseLeave={handleMouseLeave}
-                        className="relative w-72 h-72 md:w-96 md:h-96 rounded-full cursor-pointer animate-float bg-[#9B1C1C]"
-                    >
-                        <div className="absolute -inset-3 bg-gradient-to-tr from-accent/40 to-primary/30 rounded-full blur-2xl opacity-40" />
-                        <img
-                            src="/profile.png"
-                            alt="Muzayyin"
-                            loading="eager"
-                            fetchPriority="high"
-                            decoding="async"
-                            width="384"
-                            height="384"
-                            className="relative z-10 w-full h-full object-cover rounded-full border-4 border-light-300 dark:border-dark-100 shadow-2xl"
-                        />
-                    </motion.div>
+                    <div className="flex flex-col items-center">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
+                            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                            transition={{ duration: 1, type: 'spring', stiffness: 80, damping: 14, delay: 0.2 }}
+                            style={{ rotateX, rotateY, transformPerspective: 800 }}
+                            onMouseMove={handleMouseMove}
+                            onMouseLeave={handleMouseLeave}
+                            className="relative w-72 h-72 md:w-96 md:h-96 rounded-full cursor-pointer animate-float bg-[#9B1C1C]"
+                        >
+                            <div className="absolute -inset-3 bg-gradient-to-tr from-accent/40 to-primary/30 rounded-full blur-2xl opacity-40" />
+                            <img
+                                src="/profile.png"
+                                alt="Muzayyin"
+                                loading="eager"
+                                fetchPriority="high"
+                                decoding="async"
+                                width="384"
+                                height="384"
+                                className="relative z-10 w-full h-full object-cover rounded-full border-4 border-light-300 dark:border-dark-100 shadow-2xl"
+                            />
+                        </motion.div>
+
+                        <motion.div
+                            {...fadeUp(0.6)}
+                            className="flex items-center gap-4 md:gap-5 mt-7"
+                        >
+                            {socials.map((social) => (
+                                <motion.a
+                                    key={social.label}
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    title={social.label}
+                                    whileHover={{ y: -5, scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="group w-12 h-12 flex items-center justify-center bg-white dark:bg-dark-100 border border-[#E5E5E5] dark:border-gray-700 rounded-[20px] shadow-sm hover:bg-accent hover:shadow-xl transition-all duration-300 ease-out"
+                                >
+                                    <social.icon className="text-xl text-dark-100 dark:text-light-100 group-hover:text-white transition-colors duration-300 ease-out" />
+                                </motion.a>
+                            ))}
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

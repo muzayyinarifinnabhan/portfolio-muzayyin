@@ -10,36 +10,70 @@ import FloatingOrbs from './FloatingOrbs';
 import SectionHeader from './SectionHeader';
 import { useLanguage } from '../context/LanguageContext';
 
-const skills = [
-    { name: "HTML5", icon: <FaHtml5 className="text-[#E34F26]" /> },
-    { name: "CSS3", icon: <FaCss3Alt className="text-[#1572B6]" /> },
-    { name: "JavaScript", icon: <SiJavascript className="text-[#F7DF1E]" /> },
-    { name: "React Native", icon: <SiReact className="text-[#61DAFB]" /> },
-    { name: "React.Js", icon: <SiReact className="text-[#61DAFB]" /> },
-    { name: "TypeScript", icon: <SiTypescript className="text-[#3178C6]" /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#06B6D4]" /> },
-    { name: "Next.js", icon: <SiNextdotjs className="text-dark-100 dark:text-light-100" /> },
-    { name: "Figma", icon: <SiFigma className="text-[#F24E1E]" /> },
-    { name: "Git", icon: <SiGit className="text-[#F05032]" /> },
-    { name: "Vite", icon: <SiVite className="text-[#646CFF]" /> },
-    { name: "PostgreSQL", icon: <SiPostgresql className="text-[#336791]" /> },
-    { name: "Kotlin", icon: <SiKotlin className="text-[#7F52FF]" /> },
-    { name: "Framer Motion", icon: <SiFramer className="text-dark-100 dark:text-light-100" /> },
-    { name: "Node.js", icon: <SiNodedotjs className="text-[#339933]" /> },
+const row1 = [
+    { name: 'HTML', icon: FaHtml5, color: '#E34F26' },
+    { name: 'CSS', icon: FaCss3Alt, color: '#1572B6' },
+    { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
+    { name: 'React Native', icon: SiReact, color: '#61DAFB' },
+    { name: 'React.js', icon: SiReact, color: '#61DAFB' },
+    { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+    { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
+    { name: 'Next.js', icon: SiNextdotjs, color: '#000' },
 ];
 
-const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.03 } },
-};
+const row2 = [
+    { name: 'Figma', icon: SiFigma, color: '#F24E1E' },
+    { name: 'Git', icon: SiGit, color: '#F05032' },
+    { name: 'Vite', icon: SiVite, color: '#646CFF' },
+    { name: 'PostgreSQL', icon: SiPostgresql, color: '#336791' },
+    { name: 'Kotlin', icon: SiKotlin, color: '#7F52FF' },
+    { name: 'Framer Motion', icon: SiFramer, color: '#000' },
+    { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+];
 
-const itemVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 20 },
-    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+const MarqueeRow = ({ items, direction = 'left', duration = 25 }) => {
+    const duplicatedItems = [...items, ...items];
+
+    return (
+        <div className="overflow-hidden">
+            <motion.div
+                className="flex gap-3 md:gap-4 w-max"
+                animate={{
+                    x: direction === 'left' ? ['0%', '-50%'] : ['-50%', '0%'],
+                }}
+                transition={{
+                    duration,
+                    ease: 'linear',
+                    repeat: Infinity,
+                }}
+            >
+                {duplicatedItems.map((item, index) => {
+                    const IconComponent = item.icon;
+                    return (
+                        <motion.div
+                            key={`${item.name}-${index}`}
+                            whileHover={{ scale: 1.05, y: -4 }}
+                            transition={{ type: 'spring', stiffness: 300, damping: 18 }}
+                            className="flex items-center gap-2.5 md:gap-3 px-4 md:px-5 py-2.5 md:py-3 bg-white dark:bg-dark-100 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-gray-900/60 cursor-default shrink-0 select-none"
+                        >
+                            <IconComponent
+                                style={{ color: item.color }}
+                                className={`text-xl md:text-2xl shrink-0 ${item.name === 'Next.js' || item.name === 'Framer Motion' ? 'dark:text-white' : ''}`}
+                            />
+                            <span className="font-medium text-gray-800 dark:text-light-100 whitespace-nowrap text-sm md:text-base">
+                                {item.name}
+                            </span>
+                        </motion.div>
+                    );
+                })}
+            </motion.div>
+        </div>
+    );
 };
 
 const Skills = () => {
     const { t, language } = useLanguage();
+
     return (
         <section id="skills" className="py-24 bg-light-100 dark:bg-dark-300 relative overflow-hidden">
             <FloatingOrbs variant="subtle" />
@@ -51,29 +85,10 @@ const Skills = () => {
                     highlight={t.skills.titleHighlight}
                 />
 
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: '-40px' }}
-                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 max-w-5xl mx-auto"
-                >
-                    {skills.map((skill, idx) => (
-                        <motion.div
-                            key={skill.name}
-                            variants={itemVariants}
-                            className="glass-card p-6 flex flex-col items-center justify-center gap-3 cursor-default relative overflow-hidden group hover:border-accent/40 transition-colors duration-300"
-                        >
-                            <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-0" />
-                            <div className="text-5xl relative z-10 group-hover:scale-110 transition-transform duration-300">
-                                {skill.icon}
-                            </div>
-                            <span className="font-semibold text-dark-100 dark:text-light-100 text-center text-sm relative z-10 group-hover:text-accent transition-colors duration-300">
-                                {skill.name}
-                            </span>
-                        </motion.div>
-                    ))}
-                </motion.div>
+                <div className="space-y-5 md:space-y-6 max-w-7xl mx-auto">
+                    <MarqueeRow items={row1} direction="left" duration={25} />
+                    <MarqueeRow items={row2} direction="right" duration={30} />
+                </div>
             </div>
         </section>
     );

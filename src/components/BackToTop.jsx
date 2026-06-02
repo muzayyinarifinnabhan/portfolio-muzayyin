@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BsArrowUp } from 'react-icons/bs';
+import { ArrowUp } from 'lucide-react';
 
 const BackToTop = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -33,10 +33,11 @@ const BackToTop = () => {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.5, y: 20 }}
                     onClick={scrollToTop}
-                    className="fixed bottom-24 right-6 z-40 p-3 bg-accent text-light-100 rounded-full shadow-md shadow-accent/25 hover:bg-accent/90 transition-all hover:shadow-accent/35"
+                    whileHover={{ scale: 1.05 }}
+                    className="fixed bottom-6 right-6 z-40 p-3 bg-accent text-white rounded-full shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30 transition-shadow duration-300"
                     aria-label="Back to Top"
                 >
-                    <BsArrowUp size={24} />
+                    <ArrowUp size={22} />
                 </motion.button>
             )}
         </AnimatePresence>
